@@ -28,7 +28,7 @@ export default function Logon(){
             //faz o direcionamento de rotas quando não podemos usar <Link />
             history.push('/profile');
         }catch(err){
-            alert('Falha no login, tente novamente. ');
+            alert('Email ou senha incorretos, tente novamente.');
         }
     }   
 
