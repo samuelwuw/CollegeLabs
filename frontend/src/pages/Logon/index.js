@@ -39,8 +39,8 @@ export default function Logon(){
                 <img src={logoImg} alt="College Labs"/>
 
                 <form onSubmit={handleLogin}>
-                    <h1>Faça seu logon</h1>
-
+                    <h1 id = "logon">Seja Bem-Vindo!</h1>
+                    <h2>Faça seu logon!</h2>
                     <input 
                         placeholder="Seu email"
                         value = {email}
@@ -57,7 +57,12 @@ export default function Logon(){
 
                     <Link className="back-link" to="/register">
                         <FiLogIn size={16} color='#E02041' />
-                        Não tenho cadastro
+                        Cadastro Pesquisadores
+                    </Link>
+
+                    <Link className="back-link" to="/register" id = "back-link2">
+                        <FiLogIn size={16} color='#E02041' />
+                        Cadastro Usuários
                     </Link>
                 </form>
             </section>
