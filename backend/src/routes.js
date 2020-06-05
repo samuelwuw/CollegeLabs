@@ -4,6 +4,7 @@ const express = require('express');
 const { celebrate, Segments, Joi } = require('celebrate');
 
 const ResearcherController = require('./controllers/ResearcherController');
+const CitizenController = require('./controllers/CitizenController');
 const PostController = require('./controllers/PostController');
 const ProfileController = require('./controllers/ProfileController');
 const SessionController = require('./controllers/SessionController');
@@ -66,4 +67,15 @@ routes.delete('/posts/:id',celebrate({
 }), PostController.delete);
 
 
+routes.get('/citizens', CitizenController.index);
+
+routes.post('/citizens', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        name: Joi.string().required(),
+        password: Joi.string().required(),
+        email: Joi.string().required().email()
+    })
+}), CitizenController.create);
+
 module.exports = routes;
+
