@@ -14,7 +14,8 @@ export default function NewIncident(){
 
     const history = useHistory();
 
-    const researcherId = localStorage.getItem('reseacherid'); //'ongId');
+    const researcherId = localStorage.getItem('researcherId'); 
+    console.log(researcherId);
 
     async function handleNewPost(e){
         //previnir comportamento padrão do form, recarregando a pag

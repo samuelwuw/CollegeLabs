@@ -24,6 +24,7 @@ export default function Logon(){
 
             localStorage.setItem('researcherEmail', email);
             localStorage.setItem('researcherName', response.data.name);
+            localStorage.setItem('researcherId', response.data.id);
 
             //faz o direcionamento de rotas quando não podemos usar <Link />
             history.push('/profile');
@@ -47,7 +48,7 @@ export default function Logon(){
                      />
 
                     <input 
-                        placeholder="Senha"
+                        placeholder="Senha" 
                         value = {password}
                         onChange= {e => setPassword(e.target.value)}
                      />

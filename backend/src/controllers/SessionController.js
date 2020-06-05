@@ -7,7 +7,7 @@ module.exports = {
             const researcher = await connection('researchers')
                 .where('email', email)
                 .andWhere('password', password)
-                .select('name')
+                .select('name', 'id')
                 .first();
             
             if(!researcher){
