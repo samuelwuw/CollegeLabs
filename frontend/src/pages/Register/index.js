@@ -102,7 +102,7 @@ export default function Register(){
                  
                    
                     <button className="button" type="submit">Cadastrar</button>
-                    <button className="buttonUser" type="submit" >Usuário comum</button>
+                    
 
                 </form>
                 <form onSubmit={handleRegister} id = "form2">
