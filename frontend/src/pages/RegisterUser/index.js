@@ -26,7 +26,7 @@ export default function Register(){
         
         try{
                 //axios já envia em json
-            const response = await api.post('researchers', data);
+            const response = await api.post('citizens', data);
 
             alert(`Seu id de acesso: ${response.data.id}`);
 
@@ -43,7 +43,7 @@ export default function Register(){
                     <img src={logoImg} alt="College Labs"/>
 
                     <h1>Cadastro</h1>
-                    <p>Faça seu cadastro, entre na plataforma, publique seu projeto e encontre outros de seu interesse!</p>
+                    <p>Faça seu cadastro, explore as pesquisas de seu interesse!</p>
 
                     <Link className="back-link" to="/">
                         <FiArrowLeft size={16} color='#E02041' />
@@ -70,11 +70,9 @@ export default function Register(){
                     />          
                    
                     <button className="button" type="submit">Cadastrar</button>
-                    
-
+                  
                 </form>
-                
-                
+                                
             </div>
         </div>
     );
