@@ -60,6 +60,18 @@ routes.post('/posts',celebrate({
     }).unknown(),
 }) ,PostController.create);
 
+
+routes.put('/posts/:id', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        title: Joi.string().required(),
+        description: Joi.string().required(),
+    }),
+    [Segments.HEADERS]: Joi.object({
+        authorization: Joi.string().required(),
+    }).unknown(),    
+}), PostController.update);
+
+
 routes.delete('/posts/:id',celebrate({
     [Segments.PARAMS]: Joi.object().keys({
         id: Joi.number().required(),
