@@ -42,6 +42,21 @@ routes.post('/researchers', celebrate({
     })
 }), ResearcherController.create);
 
+routes.put('/researchers/:id', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        name: Joi.string().required(),
+        password: Joi.string().required(),
+        email: Joi.string().required().email(),
+        birthdate: Joi.string().required(),
+        workdate: Joi.string().required(),
+        city: Joi.string().required(),
+        uf: Joi.string().required().length(2),
+        institution: Joi.string().required(),
+        graduationlvl: Joi.string().required(),
+        graduationinstitution: Joi.string().required(),
+        latteslink: Joi.string().required()
+    })
+}), ResearcherController.update);
 
 routes.get('/posts', celebrate({
     [Segments.QUERY]: Joi.object().keys({

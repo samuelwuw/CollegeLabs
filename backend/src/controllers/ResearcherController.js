@@ -30,5 +30,18 @@ module.exports = {
         })
 
         return response.json({ id });
+    },
+
+    async update(request, response){
+        const { id } = request.params;
+        const  { name, password, email, birthdate, workdate, city, uf, institution,
+            graduationlvl, graduationinstitution, latteslink } = request.body;
+
+        await connection('researchers').where('id', id).update({
+            name, password, email, birthdate, workdate, city, uf, institution,
+            graduationlvl, graduationinstitution, latteslink
+        });
+
+        return response.status(204).send();
     }
 };
