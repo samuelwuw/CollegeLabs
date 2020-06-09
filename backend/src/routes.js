@@ -104,5 +104,13 @@ routes.post('/citizens', celebrate({
     })
 }), CitizenController.create);
 
+routes.post('/citizens/:id', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        name: Joi.string().required(),
+        password: Joi.string().required(),
+        email: Joi.string().required().email()
+    })
+}), CitizenController.update);
+
 module.exports = routes;
 

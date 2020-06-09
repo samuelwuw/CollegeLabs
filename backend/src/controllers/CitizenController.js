@@ -21,5 +21,18 @@ module.exports = {
         })
 
         return response.json({ id });
+    },
+
+    async update(request, response){
+        const { id } = request.params;
+        const  { name, password, email } = request.body;
+
+        await connection('citizens').where('id', id).update({
+            name, 
+            password, 
+            email
+        });
+
+        return response.status(204).send();
     }
 };
