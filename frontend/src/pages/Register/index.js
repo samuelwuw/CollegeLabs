@@ -59,11 +59,11 @@ export default function Register(){
                     <img src={logoImg} alt="College Labs"/>
 
                     <h1>Cadastro</h1>
-                    <p>Faça seu cadastro, entre na plataforma e ajude as pessoas a encontrarem seus projetos</p>
+                    <p>Faça seu cadastro, entre na plataforma, publique seu projeto e encontre outros de seu interesse!</p>
 
                     <Link className="back-link" to="/">
                         <FiArrowLeft size={16} color='#E02041' />
-                        Não tenho cadastro
+                        Menu Principal
                     </Link>
                 </section>
 
@@ -94,47 +94,47 @@ export default function Register(){
                         value={workdate}
                         onChange={e => setWorkdate(e.target.value)}
                     />
-
-                    <div className="input-group">
-                        <input 
-                            placeholder="Cidade" 
-                            value={city}
-                            onChange={e => setCity(e.target.value)}
+                    <input 
+                        placeholder="Cidade" 
+                        value={city}
+                        onChange={e => setCity(e.target.value)}
                         />
-                        <input 
-                            placeholder="UF" 
-                            style={{ width: 80 }} 
-                            value={uf}
-                            onChange={e => setUf(e.target.value)}
-                        />
-                        <input 
-                            placeholder="Intituição" 
-                            style={{ width: 80 }} 
-                            value={institution}
-                            onChange={e => setInstitution(e.target.value)}
-                        />
-                        <input 
-                            placeholder="Nivel de graduação" 
-                            style={{ width: 80 }} 
-                            value={graduationlvl}
-                            onChange={e => setGraduationlvl(e.target.value)}
-                        />
-                        <input 
-                            placeholder="Instituição da graduação " 
-                            style={{ width: 80 }} 
-                            value={graduationinstitution}
-                            onChange={e => setGraduationinstitution(e.target.value)}
-                        />
-                        <input 
-                            placeholder="Link Lattes" 
-                            style={{ width: 80 }} 
-                            value={latteslink}
-                            onChange={e => setLatteslink(e.target.value)}
-                        />
-                    </div>
-
+                 
+                   
                     <button className="button" type="submit">Cadastrar</button>
+                    
+
                 </form>
+                <form onSubmit={handleRegister} id = "form2">
+                
+                <input 
+                        placeholder="Estado" 
+                        value={uf}
+                        onChange={e => setUf(e.target.value)}
+                        />
+                    <input 
+                        placeholder="Instituição" 
+                        value={institution}
+                        onChange={e => setInstitution(e.target.value)}
+                        />
+                     <input 
+                        placeholder="Nivel de graduação" 
+                        value={graduationlvl}
+                        onChange={e => setGraduationlvl(e.target.value)}
+                        />
+                    
+                    <input 
+                        placeholder="Instituição da graduação" 
+                        value={graduationinstitution}
+                        onChange={e => setGraduationinstitution(e.target.value)}
+                        />
+                     <input 
+                        placeholder="Link Lattes" 
+                        value={latteslink}
+                        onChange={e => setLatteslink(e.target.value)}
+                        />
+                </form>
+                
             </div>
         </div>
     );

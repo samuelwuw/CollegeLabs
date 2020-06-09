@@ -37,6 +37,27 @@ module.exports = {
         return response.json({ id });
     },  
 
+    async update(request, response){
+        const { id } = request.params;
+        const researcher_id = request.headers.authorization;
+        const { title, description } = request.body;
+
+        const post = await connection('posts')
+        .where('id', id)
+        .select('researcher_id')
+        .first();
+
+        if(post.researcher_id != researcher_id){
+            return response.status(401).json({ error: 'Operation not permitted'});
+        }
+
+        await connection('posts').where('id', id).update({
+            title,
+            description
+        });
+        return response.status(204).send();
+    },
+
     async delete(request, response){
         const { id } = request.params;
         const researcher_id = request.headers.authorization;

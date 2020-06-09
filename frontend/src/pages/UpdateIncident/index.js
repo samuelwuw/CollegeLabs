@@ -8,7 +8,7 @@ import './styles.css';
 
 import logoImg from '../../assets/logo.png';
 
-export default function NewIncident(){
+export default function UpdateIncident(){
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
@@ -17,9 +17,11 @@ export default function NewIncident(){
     const researcherId = localStorage.getItem('researcherId'); 
     console.log(researcherId);
 
-    async function handleNewPost(e){
+    async function handleUpdatePost(e){
         //previnir comportamento padrão do form, recarregando a pag
         e.preventDefault();
+
+        const post_id = localStorage.getItem('post_id');
 
         const data = {
             title, 
@@ -27,7 +29,7 @@ export default function NewIncident(){
         };
 
         try{
-            await api.post('posts', data, {
+            await api.put(`posts/${post_id}`, data, {
                 headers: {
                     Authorization: researcherId, 
                 }
@@ -45,7 +47,7 @@ export default function NewIncident(){
                 <section>
                     <img src={logoImg} alt="College Labs"/>
 
-                    <h1>Criar novo post</h1>
+                    <h1>Editar post</h1>
                     <p>Escreva o post</p>
 
                     <Link className="back-link" to="/profile">
@@ -54,7 +56,7 @@ export default function NewIncident(){
                     </Link>
                 </section>
 
-                <form onSubmit={handleNewPost}>
+                <form onSubmit={handleUpdatePost}>
                     <input 
                         placeholder="Título do post"
                         value={title}

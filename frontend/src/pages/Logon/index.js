@@ -24,11 +24,12 @@ export default function Logon(){
 
             localStorage.setItem('researcherEmail', email);
             localStorage.setItem('researcherName', response.data.name);
+            localStorage.setItem('researcherId', response.data.id);
 
             //faz o direcionamento de rotas quando não podemos usar <Link />
             history.push('/profile');
         }catch(err){
-            alert('Falha no login, tente novamente. ');
+            alert('Email ou senha incorretos, tente novamente.');
         }
     }   
 
@@ -38,8 +39,8 @@ export default function Logon(){
                 <img src={logoImg} alt="College Labs"/>
 
                 <form onSubmit={handleLogin}>
-                    <h1>Faça seu logon</h1>
-
+                    {/*<h1 id = "logon">Seja Bem-Vindo!</h1>*/}
+                    <h1>Faça seu logon!</h1>
                     <input 
                         placeholder="Seu email"
                         value = {email}
@@ -47,7 +48,7 @@ export default function Logon(){
                      />
 
                     <input 
-                        placeholder="Senha"
+                        placeholder="Senha" 
                         value = {password}
                         onChange= {e => setPassword(e.target.value)}
                      />
@@ -56,7 +57,12 @@ export default function Logon(){
 
                     <Link className="back-link" to="/register">
                         <FiLogIn size={16} color='#E02041' />
-                        Não tenho cadastro
+                        Seja um Pesquisador
+                    </Link>
+
+                    <Link className="back-link" to="/registerUser" id = "back-link2">
+                        <FiLogIn size={16} color='#E02041' />
+                        Tenha acesso a pesquisas 
                     </Link>
                 </form>
             </section>

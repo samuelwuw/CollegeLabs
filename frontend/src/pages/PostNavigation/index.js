@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2, FiChrome, FiEdit, FiSearch } from 'react-icons/fi';
+import { FiPower, FiTrash2, FiArchive } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -65,19 +65,12 @@ export default function Profile(){
                 <img src={logoImg} alt="College Labs"/>
                 <span>Bem vindo pesquisador, {researcherName}</span>
 
-                
                 <Link className="button" to="posts/new">Cadastrar novo post</Link>
-                <button id = "navigationBtn">
-                    <FiSearch size={20}/>
-                </button>
                 <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#E02041" />
                 </button>
-                
             </header>
-            <h4>Instituição da graduação:</h4>
-            <h4>Nível de graduação:</h4>
-            <h4>Número de artigos:</h4>
+
             <h1>Posts cadastrados</h1>
 
             <ul>
@@ -93,7 +86,7 @@ export default function Profile(){
                             <FiTrash2 size={20} color="#a8a8b3" />
                         </button>
                         <button onClick= {() => handleUpdatePost(post.id)}type="button" id="updateBtn">
-                            <FiEdit size={20} color="#a8a8b3" />
+                            <FiArchive size={20} color="#a8a8b3" />
                         </button>
                     </li>
                 ))}

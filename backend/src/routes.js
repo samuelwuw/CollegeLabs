@@ -4,6 +4,7 @@ const express = require('express');
 const { celebrate, Segments, Joi } = require('celebrate');
 
 const ResearcherController = require('./controllers/ResearcherController');
+const CitizenController = require('./controllers/CitizenController');
 const PostController = require('./controllers/PostController');
 const ProfileController = require('./controllers/ProfileController');
 const SessionController = require('./controllers/SessionController');
@@ -41,6 +42,21 @@ routes.post('/researchers', celebrate({
     })
 }), ResearcherController.create);
 
+routes.put('/researchers/:id', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        name: Joi.string().required(),
+        password: Joi.string().required(),
+        email: Joi.string().required().email(),
+        birthdate: Joi.string().required(),
+        workdate: Joi.string().required(),
+        city: Joi.string().required(),
+        uf: Joi.string().required().length(2),
+        institution: Joi.string().required(),
+        graduationlvl: Joi.string().required(),
+        graduationinstitution: Joi.string().required(),
+        latteslink: Joi.string().required()
+    })
+}), ResearcherController.update);
 
 routes.get('/posts', celebrate({
     [Segments.QUERY]: Joi.object().keys({
@@ -59,6 +75,18 @@ routes.post('/posts',celebrate({
     }).unknown(),
 }) ,PostController.create);
 
+
+routes.put('/posts/:id', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        title: Joi.string().required(),
+        description: Joi.string().required(),
+    }),
+    [Segments.HEADERS]: Joi.object({
+        authorization: Joi.string().required(),
+    }).unknown(),    
+}), PostController.update);
+
+
 routes.delete('/posts/:id',celebrate({
     [Segments.PARAMS]: Joi.object().keys({
         id: Joi.number().required(),
@@ -66,4 +94,23 @@ routes.delete('/posts/:id',celebrate({
 }), PostController.delete);
 
 
+routes.get('/citizens', CitizenController.index);
+
+routes.post('/citizens', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        name: Joi.string().required(),
+        password: Joi.string().required(),
+        email: Joi.string().required().email()
+    })
+}), CitizenController.create);
+
+routes.post('/citizens/:id', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        name: Joi.string().required(),
+        password: Joi.string().required(),
+        email: Joi.string().required().email()
+    })
+}), CitizenController.update);
+
 module.exports = routes;
+
