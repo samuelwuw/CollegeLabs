@@ -113,7 +113,7 @@ export default function Register(){
                         onChange={e => setUf(e.target.value)}
                         />
                     <input 
-                        placeholder="Intituição" 
+                        placeholder="Instituição" 
                         value={institution}
                         onChange={e => setInstitution(e.target.value)}
                         />
@@ -124,7 +124,7 @@ export default function Register(){
                         />
                     
                     <input 
-                        placeholder="Instituição da graduação " 
+                        placeholder="Instituição da graduação" 
                         value={graduationinstitution}
                         onChange={e => setGraduationinstitution(e.target.value)}
                         />
