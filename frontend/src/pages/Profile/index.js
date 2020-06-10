@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2, FiChrome, FiEdit, FiSearch } from 'react-icons/fi';
+import { FiPower, FiTrash2, FiEdit, FiSearch } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -28,6 +28,7 @@ export default function Profile(){
         })
     }, [researcherId]);
 
+    
     //funções com handle no começo interagem com algo do usuário
     async function handleDeletePost(id){
         try{
@@ -58,6 +59,7 @@ export default function Profile(){
 
         history.push('/');
     }
+
 
     return (
         <div className="profile-container">

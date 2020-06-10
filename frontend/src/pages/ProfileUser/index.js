@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2, FiChrome, FiEdit, FiSearch } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
+import { FiPower, FiSearch } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -13,45 +13,18 @@ export default function Profile(){
 
     const history = useHistory();
 
-    const researcherId = localStorage.getItem('researcherId');
-    const researcherName = localStorage.getItem('researcherName');
+    const citizenId = localStorage.getItem('researcherId');
+    const citizenName = localStorage.getItem('researcherName');
 
     //recebe qual função deseja ser executada, e quando ela será executada
     //toda vez que as informações do array mudarem, ele executa a função
     useEffect(() => {
-        api.get('profile',{
-            headers: {
-                Authorization: researcherId,
-            }
-        }).then(response => {
+        api.get('posts').then(response => {
             setPosts(response.data);
         })
-    }, [researcherId]);
+    }, [citizenId]);
 
     //funções com handle no começo interagem com algo do usuário
-    async function handleDeletePost(id){
-        try{
-            await api.delete(`posts/${id}`, {
-                headers: {
-                    Authorization: researcherId,
-                }
-            });
-
-            //faz varredura no array de incidents, procura o que tem o id de delete, e o remove dos incidents
-            setPosts(posts.filter(post => post.id !==  id))
-        }catch(err){
-            alert('Erro ao deletar caso, tente novamente. ');
-        }
-    }
-
-    async function handleUpdatePost(id){
-        try{
-            localStorage.setItem("post_id", id);
-            history.push('/posts/update');
-        }catch(err){
-            alert('Erro ao atualizar post, tente novamente. ')
-        }
-    }
 
     function handleLogout(){
         localStorage.clear();
@@ -63,10 +36,8 @@ export default function Profile(){
         <div className="profile-container">
             <header>
                 <img src={logoImg} alt="College Labs"/>
-                <span>Bem vindo pesquisador, {researcherName}</span>
+                <span>Bem vindo, {citizenName}</span>
 
-                
-                <Link className="button" to="posts/new">Cadastrar novo post</Link>
                 <button id = "navigationBtn">
                     <FiSearch size={20}/>
                 </button>
@@ -75,10 +46,8 @@ export default function Profile(){
                 </button>
                 
             </header>
-            <h4>Instituição da graduação:</h4>
-            <h4>Nível de graduação:</h4>
-            <h4>Número de artigos:</h4>
-            <h1>Posts cadastrados</h1>
+            <h4>Seguindo: </h4>
+            <h1>Posts cadastrados: </h1>
 
             <ul>
                 {posts.map(post => (
@@ -88,13 +57,6 @@ export default function Profile(){
 
                         <strong>Texto:</strong>
                         <p>{post.description}</p>
-
-                        <button onClick= {() => handleDeletePost(post.id)} type="button">
-                            <FiTrash2 size={20} color="#a8a8b3" />
-                        </button>
-                        <button onClick= {() => handleUpdatePost(post.id)}type="button" id="updateBtn">
-                            <FiEdit size={20} color="#a8a8b3" />
-                        </button>
                     </li>
                 ))}
             </ul>

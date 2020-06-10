@@ -21,13 +21,19 @@ export default function Logon(){
 
         try{
             const response = await api.post('sessions', { email, password });
-
+            
             localStorage.setItem('researcherEmail', email);
             localStorage.setItem('researcherName', response.data.name);
-            localStorage.setItem('researcherId', response.data.id);
+            localStorage.setItem('researcherId', response.data.id);            
+            const verify_id = response.data.id;
 
-            //faz o direcionamento de rotas quando não podemos usar <Link />
-            history.push('/profile');
+            if(verify_id.charAt(0)==="1"){
+                //faz o direcionamento de rotas quando não podemos usar <Link />
+                history.push('/profile');
+            }else{
+                history.push('/profileUser');
+            }
+            
         }catch(err){
             alert('Email ou senha incorretos, tente novamente.');
         }

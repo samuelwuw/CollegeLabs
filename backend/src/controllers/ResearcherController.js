@@ -12,7 +12,7 @@ module.exports = {
         const { name, password, email, birthdate, workdate, city, uf, institution,
             graduationlvl, graduationinstitution, latteslink } = request.body;
 
-        const id = generateUniqueId();
+        const id = "1" + generateUniqueId();
 
         await connection('researchers').insert({
             name, 
