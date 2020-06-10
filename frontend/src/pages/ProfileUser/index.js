@@ -38,7 +38,7 @@ export default function Profile(){
                 <img src={logoImg} alt="College Labs"/>
                 <span>Bem vindo, {citizenName}</span>
 
-                <button id = "navigationBtn">
+                <button id = "navigationButton">
                     <FiSearch size={20}/>
                 </button>
                 <button onClick={handleLogout} type="button">
@@ -46,19 +46,24 @@ export default function Profile(){
                 </button>
                 
             </header>
-            <h4>Seguindo: </h4>
-            <h1>Posts cadastrados: </h1>
+            <h1>Seguindo: </h1>
+
 
             <ul>
                 {posts.map(post => (
                     <li key={post.id}>
-                        <strong>Título:</strong>
+                        <strong >Título:</strong> 
                         <p>{post.title}</p>
 
-                        <strong>Texto:</strong>
+                        <strong >Texto:</strong>
                         <p>{post.description}</p>
+                    
+                        <strong id="researcherName" >Pesquisador:</strong>
+                        <p id="researcherName">{post.name}</p>
                     </li>
                 ))}
+
+                
             </ul>
         </div>
     );

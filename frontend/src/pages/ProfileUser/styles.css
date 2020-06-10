@@ -73,6 +73,8 @@
     display: block;
     margin-bottom: 16px;
     color: #41414d;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .profile-container ul li p + strong{
@@ -87,4 +89,13 @@
 
 #updateBtn {
     margin-right: 40px;
+}
+
+#navigationButton {
+    margin-left: 950px;
+}
+
+#researcherName {
+    margin-left: 505px;
+    display: block;
 }
