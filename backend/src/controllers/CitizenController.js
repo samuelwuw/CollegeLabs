@@ -11,7 +11,7 @@ module.exports = {
     async create(request, response) {
         const { name, password, email } = request.body;
 
-        const id = "1" + generateUniqueId();
+        const id = "0" + generateUniqueId();
 
         await connection('citizens').insert({
             name, 
